@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = mainStoryboard.instantiateViewController(withIdentifier: "searchVC")
+        navigationController?.pushViewController(searchViewController, animated: false)
     }
 }
 
