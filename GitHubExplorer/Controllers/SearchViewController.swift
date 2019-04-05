@@ -16,6 +16,10 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var mainWordTextField: UITextField!
     @IBOutlet weak var languageTextField: UITextField!
     
+    private let headers = ["Accept" : "application/vnd.github.mercy-preview+json"]
+    private let sheme   = "https"
+    private let host    = "api.github.com"
+    private let path    = "/search/repositories"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,5 +30,51 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        guard mainWordTextField.text != nil, languageTextField.text != nil else {
+            print("Need to print text in mainWordTextField or languageTextField!")
+            return
+        }
+        
+        guard mainWordTextField.text!.count > 0, languageTextField.text!.count > 0 else {
+            print("Need to print text in mainWordTextField or languageTextField!")
+            
+            return
+        }
+        
+        var urlComponents = URLComponents()
+        urlComponents.scheme = sheme
+        urlComponents.host = host
+        urlComponents.path = path
+    
+        urlComponents.queryItems = [
+            URLQueryItem(name: "q", value: mainWordTextField.text! + "+language:" + languageTextField.text!)
+        ]
+        
+        guard let url = urlComponents.url else {
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.allHTTPHeaderFields = headers
+        urlRequest.timeoutInterval = 30
+        
+        let urlSession = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if error != nil {
+                print("URLSession error: \(error.debugDescription)")
+                
+                return
+            }
+            
+            if let data = data {
+                if let stringData = String(data: data, encoding: .utf8) {
+                    print("OK!")
+                    print(stringData)
+                }
+            }
+        }
+        
+        urlSession.resume()
+        
     }
 }
+
