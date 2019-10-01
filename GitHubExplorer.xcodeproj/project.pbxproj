@@ -7,16 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A3B7BC52341299D00A072EF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F54A5225009C8005A44C3 /* Kingfisher.framework */; };
+		7A3B7BC62341299D00A072EF /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F54A5225009C8005A44C3 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A48CED122690A4D00388299 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A48CED022690A4D00388299 /* SearchResult.swift */; };
 		7A6F54A6225009C8005A44C3 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F54A5225009C8005A44C3 /* Kingfisher.framework */; };
 		7AA73C4B2250010100E0EAD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA73C4A2250010100E0EAD0 /* AppDelegate.swift */; };
 		7AA73C4D2250010100E0EAD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA73C4C2250010100E0EAD0 /* ViewController.swift */; };
 		7AA73C502250010100E0EAD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AA73C4E2250010100E0EAD0 /* Main.storyboard */; };
 		7AA73C522250010300E0EAD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AA73C512250010300E0EAD0 /* Assets.xcassets */; };
 		7AA73C552250010300E0EAD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AA73C532250010300E0EAD0 /* LaunchScreen.storyboard */; };
+		7AD63E26225E7B95008A9D20 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD63E25225E7B95008A9D20 /* SearchResultsViewController.swift */; };
+		7AD63E29225E94F8008A9D20 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD63E28225E94F8008A9D20 /* SearchResultTableViewCell.swift */; };
 		7AEB48F82255500E00022B8C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB48F72255500E00022B8C /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7A3B7BC72341299D00A072EF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7A3B7BC62341299D00A072EF /* Kingfisher.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7A48CED022690A4D00388299 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		7A6F54A5225009C8005A44C3 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		7AA73C472250010100E0EAD0 /* GitHubExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA73C4A2250010100E0EAD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,6 +45,8 @@
 		7AA73C512250010300E0EAD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AA73C542250010300E0EAD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AA73C562250010300E0EAD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AD63E25225E7B95008A9D20 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		7AD63E28225E94F8008A9D20 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		7AEB48F72255500E00022B8C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -33,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A3B7BC52341299D00A072EF /* Kingfisher.framework in Frameworks */,
 				7A6F54A6225009C8005A44C3 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +76,7 @@
 			children = (
 				7AA73C4C2250010100E0EAD0 /* ViewController.swift */,
 				7AEB48F72255500E00022B8C /* SearchViewController.swift */,
+				7AD63E25225E7B95008A9D20 /* SearchResultsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -77,6 +101,8 @@
 		7AA73C492250010100E0EAD0 /* GitHubExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				7AC968CE226136B5006CDFA6 /* Model */,
+				7AD63E27225E94DD008A9D20 /* Views */,
 				7A7BA6402255557A0078581E /* Controllers */,
 				7AA73C4A2250010100E0EAD0 /* AppDelegate.swift */,
 				7AA73C4E2250010100E0EAD0 /* Main.storyboard */,
@@ -85,6 +111,22 @@
 				7AA73C562250010300E0EAD0 /* Info.plist */,
 			);
 			path = GitHubExplorer;
+			sourceTree = "<group>";
+		};
+		7AC968CE226136B5006CDFA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A48CED022690A4D00388299 /* SearchResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7AD63E27225E94DD008A9D20 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AD63E28225E94F8008A9D20 /* SearchResultTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +140,7 @@
 				7AA73C442250010100E0EAD0 /* Frameworks */,
 				7AA73C452250010100E0EAD0 /* Resources */,
 				7A6F54A7225009F6005A44C3 /* ShellScript */,
+				7A3B7BC72341299D00A072EF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,7 +225,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEB48F82255500E00022B8C /* SearchViewController.swift in Sources */,
+				7AD63E29225E94F8008A9D20 /* SearchResultTableViewCell.swift in Sources */,
+				7AD63E26225E7B95008A9D20 /* SearchResultsViewController.swift in Sources */,
 				7AA73C4D2250010100E0EAD0 /* ViewController.swift in Sources */,
+				7A48CED122690A4D00388299 /* SearchResult.swift in Sources */,
 				7AA73C4B2250010100E0EAD0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,9 +1,13 @@
 {
-  "commitish" : "5.3.1",
+  "commitish" : "5.8.1",
   "iOS" : [
     {
+      "name" : "KingfisherSwiftUI",
+      "hash" : "2cf75e2b080d90047ac5e2a5e676a5f4ba2e86df9640dc4a75389897fde3505c"
+    },
+    {
       "name" : "Kingfisher",
-      "hash" : "2d6df6193d21d25531f9f86745f28d3b1b030c632fed3133b03dd1cc2b710e1a"
+      "hash" : "92e9f14c5e44713d4f1ef6c87a6662d9c1c4c985a9c9338d028cf79dacf05307"
     }
   ]
 }

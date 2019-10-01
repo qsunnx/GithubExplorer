@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class SearchViewController: UIViewController {
-
+    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userAvatarImageView: UIImageView!
     @IBOutlet weak var mainWordTextField: UITextField!
@@ -45,7 +45,7 @@ class SearchViewController: UIViewController {
         urlComponents.scheme = sheme
         urlComponents.host = host
         urlComponents.path = path
-    
+        
         urlComponents.queryItems = [
             URLQueryItem(name: "q", value: mainWordTextField.text! + "+language:" + languageTextField.text!)
         ]
@@ -61,14 +61,25 @@ class SearchViewController: UIViewController {
         let urlSession = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if error != nil {
                 print("URLSession error: \(error.debugDescription)")
-                
                 return
             }
             
             if let data = data {
-                if let stringData = String(data: data, encoding: .utf8) {
-                    print("OK!")
-                    print(stringData)
+                var searchResult: SearchResult?
+                
+                do {
+                    searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
+                } catch {
+                    print("Error while decoding JSON from server: \(error)")
+                }
+
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let searchResultsVC = storyboard.instantiateViewController(withIdentifier: "searchResultsVC") as! SearchResultsViewController
+                    
+                    searchResultsVC.searchResult = searchResult
+                    
+                    self.navigationController?.pushViewController(searchResultsVC, animated: false)
                 }
             }
         }
@@ -77,4 +88,5 @@ class SearchViewController: UIViewController {
         
     }
 }
+
 
