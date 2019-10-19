@@ -49,5 +49,16 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let foundedRepos = searchResult?.items else { return }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let webVC = storyboard.instantiateViewController(withIdentifier: "webVC") as! WebViewController
+        
+        webVC.repo_url = foundedRepos[indexPath.row].htmlURL
+        
+        self.navigationController?.pushViewController(webVC, animated: false)
+    }
 }
 

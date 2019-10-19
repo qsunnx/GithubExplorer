@@ -21,12 +21,19 @@ class SearchViewController: UIViewController {
     private let host    = "api.github.com"
     private let path    = "/search/repositories"
     
+    var username: String?
+    var userAvatarURL: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let username = username {
+            usernameLabel.text = "Hello, \(username)!"
+        }
+        
         let processor = RoundCornerImageProcessor(cornerRadius: 20.0)
-        let url = URL(string: "https://img.icons8.com/ios/120/000000/contacts.png")
-        userAvatarImageView.kf.setImage(with: url, placeholder: nil, options: [.processor(processor)])
+        let placeholder = UIImage(named: "placeholder")
+        userAvatarImageView.kf.setImage(with: userAvatarURL, placeholder: placeholder, options: [.processor(processor)])
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
@@ -41,6 +48,7 @@ class SearchViewController: UIViewController {
             return
         }
         
+        // TODO: Network manager!
         var urlComponents = URLComponents()
         urlComponents.scheme = sheme
         urlComponents.host = host
@@ -53,6 +61,8 @@ class SearchViewController: UIViewController {
         guard let url = urlComponents.url else {
             return
         }
+        //
+        
         
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = headers

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5f0-1N-RyW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5f0-1N-RyW">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,7 +41,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pOK-JE-obB">
                                 <rect key="frame" x="16" y="305" width="288" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-yi-DBt">
                                 <rect key="frame" x="141" y="360" width="38" height="30"/>
@@ -142,6 +142,7 @@
                                                 <constraint firstItem="i3h-qj-Ssg" firstAttribute="leading" secondItem="Thk-Rh-ex0" secondAttribute="trailing" constant="8" id="FMb-UW-Aow"/>
                                                 <constraint firstItem="Xr1-31-Vq6" firstAttribute="top" secondItem="i3h-qj-Ssg" secondAttribute="bottom" constant="5" id="HhG-hH-1h3"/>
                                                 <constraint firstItem="Thk-Rh-ex0" firstAttribute="top" secondItem="oTd-x6-Ee7" secondAttribute="top" constant="6" id="NNj-p4-pdz"/>
+                                                <constraint firstItem="Xr1-31-Vq6" firstAttribute="leading" secondItem="oxf-yy-rEl" secondAttribute="trailing" constant="8" id="PSE-1W-sNp"/>
                                                 <constraint firstItem="i3h-qj-Ssg" firstAttribute="height" secondItem="Thk-Rh-ex0" secondAttribute="height" id="QKG-si-kJF"/>
                                                 <constraint firstAttribute="trailing" secondItem="Thk-Rh-ex0" secondAttribute="trailing" constant="123" id="RfV-AW-Pbl"/>
                                                 <constraint firstItem="Thk-Rh-ex0" firstAttribute="leading" secondItem="oTd-x6-Ee7" secondAttribute="leading" constant="11" id="ZcB-6n-5Ce"/>
@@ -181,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQU-6Z-mud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1368.75" y="118.30985915492958"/>
+            <point key="canvasLocation" x="1382" y="-56"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Vil-Tw-b29">
@@ -234,7 +235,6 @@
                             <constraint firstItem="JM4-7y-VOZ" firstAttribute="centerX" secondItem="nMu-9M-tQ7" secondAttribute="centerX" id="DB7-4j-vF1"/>
                             <constraint firstItem="NBs-bM-ojv" firstAttribute="centerX" secondItem="nMu-9M-tQ7" secondAttribute="centerX" id="G60-aK-5wT"/>
                             <constraint firstItem="ydm-4X-SeV" firstAttribute="height" secondItem="JM4-7y-VOZ" secondAttribute="height" id="Idf-Ep-jiy"/>
-                            <constraint firstItem="nMu-9M-tQ7" firstAttribute="trailing" secondItem="JM4-7y-VOZ" secondAttribute="trailing" constant="40" id="QYm-gd-boy"/>
                             <constraint firstItem="ydm-4X-SeV" firstAttribute="centerX" secondItem="JM4-7y-VOZ" secondAttribute="centerX" id="WFb-jD-V38"/>
                             <constraint firstItem="ydm-4X-SeV" firstAttribute="width" secondItem="JM4-7y-VOZ" secondAttribute="width" id="erO-WX-bt1"/>
                             <constraint firstItem="5L4-of-cGR" firstAttribute="centerX" secondItem="nMu-9M-tQ7" secondAttribute="centerX" id="w8i-HM-Bay"/>
@@ -252,6 +252,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZ5-1t-eN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="472.5" y="648.5915492957746"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="s2S-Ix-CfH">
+            <objects>
+                <viewController storyboardIdentifier="webVC" id="Q8Z-aS-k0U" customClass="WebViewController" customModule="GitHubExplorer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PGf-xN-W90">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-Gz-Ib4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xyV-Gz-Ib4" firstAttribute="bottom" secondItem="aah-hW-LaI" secondAttribute="bottom" id="Oes-6C-T71"/>
+                            <constraint firstItem="xyV-Gz-Ib4" firstAttribute="leading" secondItem="aah-hW-LaI" secondAttribute="leading" id="SfN-wV-ru5"/>
+                            <constraint firstItem="xyV-Gz-Ib4" firstAttribute="trailing" secondItem="aah-hW-LaI" secondAttribute="trailing" id="o0F-tu-PvZ"/>
+                            <constraint firstItem="xyV-Gz-Ib4" firstAttribute="top" secondItem="aah-hW-LaI" secondAttribute="top" id="zjH-00-YJi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aah-hW-LaI"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="xyV-Gz-Ib4" id="Iz3-0a-tkF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYV-QY-9c4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1381.875" y="648.5915492957746"/>
         </scene>
     </scenes>
 </document>
