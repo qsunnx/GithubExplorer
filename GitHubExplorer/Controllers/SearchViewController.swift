@@ -55,45 +55,6 @@ class SearchViewController: UIViewController {
                 self.navigationController?.pushViewController(searchResultsVC, animated: false)
             }
         }
-//
-//        let networkManager = NetworkManager()
-//        let queryItems = [URLQueryItem(name: "q", value: mainWordTextField.text! + "+language:" + languageTextField.text!)]
-//
-//        guard let url = networkManager.url(path: "/search/repositories", queryItems: queryItems) else {
-//            return
-//        }
-//
-//        let headers = ["Accept" : "application/vnd.github.mercy-preview+json"]
-//        let urlRequest = networkManager.request(url: url, timeoutInterval: 30.0, headers: headers)
-//
-//        let urlSession = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-//            if error != nil {
-//                print("URLSession error: \(error.debugDescription)")
-//                return
-//            }
-//
-//            if let data = data {
-//                var searchResult: SearchResult?
-//
-//                do {
-//                    searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-//                } catch {
-//                    print("Error while decoding JSON from server: \(error)")
-//                }
-//
-//                DispatchQueue.main.async {
-//                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//                    let searchResultsVC = storyboard.instantiateViewController(withIdentifier: "searchResultsVC") as! SearchResultsViewController
-//
-//                    searchResultsVC.searchResult = searchResult
-//
-//                    self.navigationController?.pushViewController(searchResultsVC, animated: false)
-//                }
-//            }
-//        }
-//
-//        urlSession.resume()
-        
     }
 }
 
