@@ -33,7 +33,7 @@ extension WebViewController : WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let source = "document.body.style.background=\"#31bd8e\";"
         webView.evaluateJavaScript(source) { (result, error) in
-            guard error != nil else {
+            guard error == nil else {
                 print(error!)
                 
                 return

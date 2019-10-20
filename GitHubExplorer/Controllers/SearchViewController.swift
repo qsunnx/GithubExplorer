@@ -16,11 +16,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var mainWordTextField: UITextField!
     @IBOutlet weak var languageTextField: UITextField!
     
-    private let headers = ["Accept" : "application/vnd.github.mercy-preview+json"]
-    private let sheme   = "https"
-    private let host    = "api.github.com"
-    private let path    = "/search/repositories"
-    
     var username: String?
     var userAvatarURL: URL?
     
@@ -37,64 +32,67 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        guard mainWordTextField.text != nil, languageTextField.text != nil else {
+        guard let mainWord = mainWordTextField.text, let language = languageTextField.text else {
             print("Need to print text in mainWordTextField or languageTextField!")
             return
         }
-        
-        guard mainWordTextField.text!.count > 0, languageTextField.text!.count > 0 else {
-            print("Need to print text in mainWordTextField or languageTextField!")
-            
-            return
-        }
-        
-        // TODO: Network manager!
-        var urlComponents = URLComponents()
-        urlComponents.scheme = sheme
-        urlComponents.host = host
-        urlComponents.path = path
-        
-        urlComponents.queryItems = [
-            URLQueryItem(name: "q", value: mainWordTextField.text! + "+language:" + languageTextField.text!)
-        ]
-        
-        guard let url = urlComponents.url else {
-            return
-        }
-        //
-        
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.allHTTPHeaderFields = headers
-        urlRequest.timeoutInterval = 30
-        
-        let urlSession = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            if error != nil {
-                print("URLSession error: \(error.debugDescription)")
-                return
-            }
-            
-            if let data = data {
-                var searchResult: SearchResult?
-                
-                do {
-                    searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                } catch {
-                    print("Error while decoding JSON from server: \(error)")
-                }
 
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let searchResultsVC = storyboard.instantiateViewController(withIdentifier: "searchResultsVC") as! SearchResultsViewController
-                    
-                    searchResultsVC.searchResult = searchResult
-                    
-                    self.navigationController?.pushViewController(searchResultsVC, animated: false)
-                }
-            }
+        guard mainWord.count > 0, language.count > 0 else {
+            print("Need to print text in mainWordTextField or languageTextField!")
+
+            return
         }
         
-        urlSession.resume()
+        NetworkManager().search(mainWord: mainWord, language: language) { (result, error, searchResult) in
+            guard result, let searchResult = searchResult else { return }
+            
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let searchResultsVC = storyboard.instantiateViewController(withIdentifier: "searchResultsVC") as! SearchResultsViewController
+                
+                searchResultsVC.searchResult = searchResult
+                
+                self.navigationController?.pushViewController(searchResultsVC, animated: false)
+            }
+        }
+//
+//        let networkManager = NetworkManager()
+//        let queryItems = [URLQueryItem(name: "q", value: mainWordTextField.text! + "+language:" + languageTextField.text!)]
+//
+//        guard let url = networkManager.url(path: "/search/repositories", queryItems: queryItems) else {
+//            return
+//        }
+//
+//        let headers = ["Accept" : "application/vnd.github.mercy-preview+json"]
+//        let urlRequest = networkManager.request(url: url, timeoutInterval: 30.0, headers: headers)
+//
+//        let urlSession = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+//            if error != nil {
+//                print("URLSession error: \(error.debugDescription)")
+//                return
+//            }
+//
+//            if let data = data {
+//                var searchResult: SearchResult?
+//
+//                do {
+//                    searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
+//                } catch {
+//                    print("Error while decoding JSON from server: \(error)")
+//                }
+//
+//                DispatchQueue.main.async {
+//                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//                    let searchResultsVC = storyboard.instantiateViewController(withIdentifier: "searchResultsVC") as! SearchResultsViewController
+//
+//                    searchResultsVC.searchResult = searchResult
+//
+//                    self.navigationController?.pushViewController(searchResultsVC, animated: false)
+//                }
+//            }
+//        }
+//
+//        urlSession.resume()
         
     }
 }

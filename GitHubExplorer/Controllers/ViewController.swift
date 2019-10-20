@@ -42,16 +42,10 @@ class ViewController: UIViewController {
         }
 
         let base64AuthString = utf8AuthString.base64EncodedString()
+        let networkManager = NetworkManager()
         
-        NetworkManager.shared.loginAndGetCurrentUserData(base64AuthString: base64AuthString) { (success, error, user) in
-            // TODO: обработать ошибки
-            guard success else {
-                return
-            }
-            
-            guard let currentUser = user else {
-                return
-            }
+        networkManager.loginAndGetCurrentUserData(base64AuthString: base64AuthString) { (success, error, user) in
+            guard success, let currentUser = user else { return }
             
             DispatchQueue.main.async {
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
