@@ -10,7 +10,7 @@
 		7A3B7BC52341299D00A072EF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F54A5225009C8005A44C3 /* Kingfisher.framework */; };
 		7A3B7BC62341299D00A072EF /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F54A5225009C8005A44C3 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A48CED122690A4D00388299 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A48CED022690A4D00388299 /* SearchResult.swift */; };
-		7A6F54A6225009C8005A44C3 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F54A5225009C8005A44C3 /* Kingfisher.framework */; };
+		7A527C9E2385D44F00B4192F /* SecureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A527C9D2385D44F00B4192F /* SecureManager.swift */; };
 		7A9F55332351079A0069C636 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9F55322351079A0069C636 /* WebViewController.swift */; };
 		7AA73C4B2250010100E0EAD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA73C4A2250010100E0EAD0 /* AppDelegate.swift */; };
 		7AA73C4D2250010100E0EAD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA73C4C2250010100E0EAD0 /* ViewController.swift */; };
@@ -42,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		7A48CED022690A4D00388299 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		7A527C9D2385D44F00B4192F /* SecureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureManager.swift; sourceTree = "<group>"; };
 		7A6F54A5225009C8005A44C3 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		7A9F55322351079A0069C636 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7AA73C472250010100E0EAD0 /* GitHubExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +67,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3B7BC52341299D00A072EF /* Kingfisher.framework in Frameworks */,
-				7A6F54A6225009C8005A44C3 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +132,7 @@
 				7AC1B9AB235B5DC500988C05 /* RepositoryOwner.swift */,
 				7AFADEB92347697D006ED309 /* User.swift */,
 				7AEDF36223461B9B00F03766 /* NetworkManager.swift */,
+				7A527C9D2385D44F00B4192F /* SecureManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,7 +174,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Кирилл Юдин";
 				TargetAttributes = {
 					7AA73C462250010100E0EAD0 = {
@@ -243,6 +244,7 @@
 				7A9F55332351079A0069C636 /* WebViewController.swift in Sources */,
 				7AD63E29225E94F8008A9D20 /* SearchResultTableViewCell.swift in Sources */,
 				7AD63E26225E7B95008A9D20 /* SearchResultsViewController.swift in Sources */,
+				7A527C9E2385D44F00B4192F /* SecureManager.swift in Sources */,
 				7AEDF36323461B9B00F03766 /* NetworkManager.swift in Sources */,
 				7AFADEBA2347697D006ED309 /* User.swift in Sources */,
 				7AA73C4D2250010100E0EAD0 /* ViewController.swift in Sources */,

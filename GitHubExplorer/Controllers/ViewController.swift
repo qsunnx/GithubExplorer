@@ -23,6 +23,13 @@ class ViewController: UIViewController {
         logoImageView.kf.indicatorType = .activity
         logoImageView.kf.setImage(with: githubURL)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        SecureManager().getFromKeychain()
+        
+        
+    }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         // TODO: проверка на заполнение полей логина и пароля, алерт вью
@@ -46,6 +53,9 @@ class ViewController: UIViewController {
         
         networkManager.loginAndGetCurrentUserData(base64AuthString: base64AuthString) { (success, error, user) in
             guard success, let currentUser = user else { return }
+            
+            // TODO: здесь обрабатывать ошибку внутреннюю
+            _ = SecureManager().saveToKeychain(login: login, password: password)
             
             DispatchQueue.main.async {
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
