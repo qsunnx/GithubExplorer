@@ -25,14 +25,27 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        SecureManager().getFromKeychain()
-        
-        
+        do {
+            try SecureManager().getFromKeychain() { [weak self] (success, errorMessage, login, password) in
+                if success { self?.githubAuthorization(login: login, password: password) }
+                else {
+                    print(errorMessage)
+                }
+            }
+        } catch KeychainError.noPassword(let description) {
+            print(description)
+        } catch KeychainError.unexpectedPasswordData(let description) {
+            print(description)
+        } catch KeychainError.unhandledError(let status) {
+            print("Ошибка keychain \(status.description)")
+        } catch LocalAuthError.policyError(let description) {
+            print(description)
+        } catch {
+            print("Неустановленная ошибка")
+        }
     }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        // TODO: проверка на заполнение полей логина и пароля, алерт вью
         guard let login = loginTextField.text, let password = passwordTextField.text else {
             return
         }
@@ -40,7 +53,11 @@ class ViewController: UIViewController {
         guard login.count > 0, password.count > 0 else {
             return
         }
-
+        
+        githubAuthorization(login: login, password: password)
+    }
+    
+    private func githubAuthorization(login: String, password: String) {
         let authString = login + ":" + password
 
         guard let utf8AuthString = authString.data(using: .utf8) else {
@@ -55,7 +72,9 @@ class ViewController: UIViewController {
             guard success, let currentUser = user else { return }
             
             // TODO: здесь обрабатывать ошибку внутреннюю
-            _ = SecureManager().saveToKeychain(login: login, password: password)
+            if let passwordData = password.data(using: .utf8) {
+                _ = SecureManager().saveToKeychain(login: login, password: passwordData)
+            }
             
             DispatchQueue.main.async {
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
